@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import DashboardView from '../views/DashboardView.vue'
+import { isAuthenticated } from '../services/auth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,18 +24,14 @@ const router = createRouter({
   ]
 })
 
-
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = !!localStorage.getItem('employee_token'); 
+  const authenticated = isAuthenticated();
 
-  if (to.meta.requiresAuth && !isAuthenticated) {
-    
+  if (to.meta.requiresAuth && !authenticated) {
     next('/login');
-  } else if (to.path === '/login' && isAuthenticated) {
-    
+  } else if (to.path === '/login' && authenticated) {
     next('/dashboard');
   } else {
-    
     next();
   }
 })
