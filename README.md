@@ -51,6 +51,23 @@ npm run preview
 - API requests use `apiFetch()` from `src/services/api.ts`.
 - The dashboard component currently shows a lean employee table and an edit modal.
 
+## Security practices included
+
+- Auth is handled through a shared helper in `src/services/auth.ts`.
+- API requests attach a bearer token and include `Accept: application/json`.
+- 401/403 responses automatically clear stale auth state and redirect to login.
+- The login form trims credentials and validates non-empty input before sending.
+
+## Backend security notes
+
+This frontend assumes a secure backend. A real backend should:
+
+- enforce HTTPS and secure headers
+- validate bearer tokens or session cookies server-side
+- use HttpOnly cookies for session tokens when possible
+- implement rate limiting and input validation
+- protect sensitive routes with role checks
+
 ## Requirements
 
 - Node.js `^20.19.0 || >=22.12.0`
