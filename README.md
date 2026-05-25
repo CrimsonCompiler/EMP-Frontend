@@ -1,42 +1,69 @@
-# .
+# Employee Management Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+A Vue 3 + Vite frontend for a simple employee management dashboard.
 
-## Recommended IDE Setup
+## What this project contains
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Login screen** for admin authentication
+- **Dashboard** with employee list, edit/delete controls, and logout
+- **API wrapper** under `src/services/api.ts` for authenticated requests
+- **Vue Router** for `/login` and `/dashboard` flow
+- **Modern UI** using scoped component styles and Bootstrap for base UI support
 
-## Recommended Browser Setup
+## Key folders
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- `src/views/` — main page components (`LoginView.vue`, `DashboardView.vue`)
+- `src/services/` — shared API helpers
+- `src/router/` — app routing setup
+- `src/` — app entry files and root component
 
-## Type Support for `.vue` Imports in TS
+## Getting started
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+### Install dependencies
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Run locally
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Open the URL printed by Vite in your browser.
+
+### Build for production
 
 ```sh
 npm run build
 ```
+
+### Preview production build
+
+```sh
+npm run preview
+```
+
+## Notes
+
+- The app stores the auth token in `localStorage` as `employee_token`.
+- API requests use `apiFetch()` from `src/services/api.ts`.
+- The dashboard component currently shows a lean employee table and an edit modal.
+
+## Requirements
+
+- Node.js `^20.19.0 || >=22.12.0`
+- `npm`
+
+## Useful commands
+
+- `npm run dev` — start development server
+- `npm run build` — build production bundle
+- `npm run preview` — preview production output
+- `npm run type-check` — run Vue TypeScript checks
+
+## Recommended editor setup
+
+- VS Code with **Volar** for Vue TypeScript support
+- Optionally enable Vue Devtools in your browser for debugging
