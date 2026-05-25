@@ -14,11 +14,11 @@ A Vue 3 + Vite frontend for a simple employee management dashboard.
 
 ### Sign in page
 
-![Sign in page](https://www.pasteboard.co/HmWkAUsrZOCK.png)
+<img src="https://gcdnb.pbrd.co/images/HmWkAUsrZOCK.png" />
 
 ### Dashboard
 
-![Dashboard](https://www.pasteboard.co/zBmHLuG6TgiB.png)
+<img src="https://gcdnb.pbrd.co/images/zBmHLuG6TgiB.png"/>
 
 ## Key folders
 
