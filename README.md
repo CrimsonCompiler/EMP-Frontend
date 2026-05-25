@@ -10,6 +10,16 @@ A Vue 3 + Vite frontend for a simple employee management dashboard.
 - **Vue Router** for `/login` and `/dashboard` flow
 - **Modern UI** using scoped component styles and Bootstrap for base UI support
 
+## Screenshots
+
+### Sign in page
+
+![Sign in page](https://www.pasteboard.co/HmWkAUsrZOCK.png)
+
+### Dashboard
+
+![Dashboard](https://www.pasteboard.co/zBmHLuG6TgiB.png)
+
 ## Key folders
 
 - `src/views/` — main page components (`LoginView.vue`, `DashboardView.vue`)
