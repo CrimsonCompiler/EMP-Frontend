@@ -1,12 +1,18 @@
+import { getToken, clearToken } from './auth'
+
 const API_BASE_URL = 'https://localhost:7084/api';
 
 export const apiFetch = async (endpoint: string, options: RequestInit = {}) => {
-    const token = localStorage.getItem('employee_token');
-    
-    const headers: HeadersInit = {
-        'Content-Type': 'application/json',
-        ...options.headers,
+    const token = getToken();
+
+    const headers: Record<string, string> = {
+        Accept: 'application/json',
+        ...(options.headers as Record<string, string>),
     };
+
+    if (options.body) {
+        headers['Content-Type'] = 'application/json';
+    }
 
     if (token) {
         headers['Authorization'] = `Bearer ${token}`;
@@ -17,10 +23,9 @@ export const apiFetch = async (endpoint: string, options: RequestInit = {}) => {
         headers,
     });
 
-    if (response.status === 401) {
-        localStorage.removeItem('employee_token'); 
+    if (response.status === 401 || response.status === 403) {
+        clearToken();
         window.location.href = '/login';
-
     }
 
     return response;
