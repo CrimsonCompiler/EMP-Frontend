@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { apiFetch } from '../services/api'; 
+import { apiFetch } from '../services/api';
+import { setToken } from '../services/auth';
 
 const router = useRouter();
 const username = ref('');
@@ -13,24 +14,34 @@ const handleLogin = async () => {
     isLoading.value = true;
     errorMessage.value = '';
 
+    const trimmedUsername = username.value.trim();
+    const trimmedPassword = password.value.trim();
+
+    if (!trimmedUsername || !trimmedPassword) {
+        errorMessage.value = 'Please enter both username and password.';
+        isLoading.value = false;
+        return;
+    }
+
     try {
         const response = await apiFetch('/auth/login', {
             method: 'POST',
             body: JSON.stringify({
-                username: username.value,
-                password: password.value
+                username: trimmedUsername,
+                password: trimmedPassword
             })
         });
 
         if (response.ok) {
             const data = await response.json();
-            localStorage.setItem('employee_token', data.token);
+            setToken(data.token);
             router.push('/dashboard');
         } else {
             errorMessage.value = 'Invalid username or password!';
         }
     } catch (error) {
-        errorMessage.value = 'Failed to connect to the server. Is the backend running?';
+        const message = error instanceof Error ? error.message : 'Failed to connect to the server.';
+        errorMessage.value = `Connection error: ${message}`;
         console.error(error);
     } finally {
         isLoading.value = false;
