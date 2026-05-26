@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import DashboardView from '../views/DashboardView.vue'
+import AddEmployeeView from '../views/AddEmployeeView.vue'
 import { isAuthenticated } from '../services/auth'
 
 const router = createRouter({
@@ -19,6 +20,12 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/add-employee',
+      name: 'add-employee',
+      component: AddEmployeeView,
       meta: { requiresAuth: true }
     }
   ]
