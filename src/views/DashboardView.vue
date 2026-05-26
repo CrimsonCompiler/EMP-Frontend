@@ -26,6 +26,10 @@ const handleLogout = () => {
   router.push('/login');
 };
 
+const handleAddEmployee = () => {
+  router.push('/add-employee');
+};
+
 const fetchEmployees = async (): Promise<void> => {
   try {
     const response = await apiFetch('/employees');
@@ -104,6 +108,7 @@ onMounted(() => {
         <h1>Team directory</h1>
       </div>
       <div class="topbar-actions">
+        <button class="add-employee-button" @click="handleAddEmployee">+ Add Employee</button>
         <button class="logout-button" @click="handleLogout">Logout</button>
       </div>
     </div>
@@ -278,6 +283,23 @@ onMounted(() => {
 .logout-button:hover {
   transform: translateY(-1px);
   background: #1e40af;
+}
+
+.add-employee-button {
+  border: none;
+  background: #10b981;
+  color: #ffffff;
+  padding: 0.95rem 1.4rem;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 14px 30px rgba(16, 185, 129, 0.2);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.add-employee-button:hover {
+  transform: translateY(-1px);
+  background: #059669;
 }
 
 .metrics-row {
