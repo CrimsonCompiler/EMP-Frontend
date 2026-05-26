@@ -18,7 +18,10 @@ A Vue 3 + Vite frontend for a simple employee management dashboard.
 
 ### Dashboard
 
-<img src="https://gcdnb.pbrd.co/images/zBmHLuG6TgiB.png"/>
+<img src="https://gcdnb.pbrd.co/images/LEWUf_gKHYh6.png"/>
+
+## Add Employee
+<img src="https://gcdnb.pbrd.co/images/DH771Axl2sVy.png" />
 
 ## Key folders
 
